@@ -2,5 +2,5 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: git config --global user.email "you@example.com" && git config --global user.name "Your Name"
+  - init: git config --global user.email "hsieh910823@gmail.com" && git config --global user.name "hsieh0823"
   - command: flutter run -d chrome
