@@ -6,7 +6,7 @@ tasks:
       flutter upgrade
   - command: |
       git config --global user.name "hsieh0823"
-      git config --global user.email "you@example.com"
+      git config --global user.email "hsieh910823@gmail.com"
       flutter pub get
 
 ports:
