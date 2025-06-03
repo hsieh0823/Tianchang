@@ -1,0 +1,18 @@
+image: ghcr.io/gitpod-io/workspace-full
+
+tasks:
+  - init: |
+      sudo apt-get update && sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev
+      flutter upgrade
+  - command: |
+      git config --global user.name "hsieh0823"
+      git config --global user.email "hsieh910823@gmail.com"
+      flutter pub get
+
+ports:
+  - port: 3000
+    onOpen: open-preview
+
+vscode:
+  extensions:
+    - dart-code.flutter
