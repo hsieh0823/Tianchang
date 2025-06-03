@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -8,10 +10,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Tianchang AI',
+      title: '天城 AI 助理',
       home: Scaffold(
         appBar: AppBar(title: const Text('天城 AI 助理')),
-        body: const Center(child: Text('您好，我是天城。')),
+        body: const Center(child: Text('你好，我是天城')),
       ),
     );
   }
