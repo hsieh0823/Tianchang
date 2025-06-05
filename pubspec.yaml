@@ -1,8 +1,5 @@
-name: tianchang_ai
+name: tianchang_flutter_app
 description: A new Flutter project for Tianchang AI Assistant.
-
-publish_to: 'none'
-
 version: 1.0.0+1
 
 environment:
@@ -11,6 +8,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  speech_to_text: ^6.3.0
+  http: ^0.13.6
+
+  cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -18,5 +19,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/images/
