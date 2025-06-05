@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
-void main() => runApp(TianchangApp());
+void main() {
+  runApp(const MyApp());
+}
 
-class TianchangApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '天城語音助理',
+      title: 'Tianchang Voice',
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: VoiceHomePage(),
+      home: const VoiceHomePage(),
     );
   }
 }
 
 class VoiceHomePage extends StatefulWidget {
+  const VoiceHomePage({super.key});
+
   @override
   _VoiceHomePageState createState() => _VoiceHomePageState();
 }
@@ -22,7 +27,7 @@ class VoiceHomePage extends StatefulWidget {
 class _VoiceHomePageState extends State<VoiceHomePage> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
-  String _text = '點擊開始語音辨識';
+  String _text = '請說出「天城」喚醒我...';
 
   @override
   void initState() {
@@ -30,32 +35,30 @@ class _VoiceHomePageState extends State<VoiceHomePage> {
     _speech = stt.SpeechToText();
   }
 
-  void _startListening() async {
-    bool available = await _speech.initialize();
-    if (available) {
-      setState(() => _isListening = true);
-      _speech.listen(
-        onResult: (result) => setState(() {
-          _text = result.recognizedWords;
-        }),
-      );
+  void _listen() async {
+    if (!_isListening) {
+      bool available = await _speech.initialize();
+      if (available) {
+        setState(() => _isListening = true);
+        _speech.listen(onResult: (result) {
+          setState(() {
+            _text = result.recognizedWords;
+          });
+        });
+      }
     } else {
       setState(() => _isListening = false);
+      _speech.stop();
     }
-  }
-
-  void _stopListening() {
-    _speech.stop();
-    setState(() => _isListening = false);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('天城語音助理')),
-      body: Center(child: Text(_text, style: TextStyle(fontSize: 24))),
+      appBar: AppBar(title: const Text('天城 AI 助理')),
+      body: Center(child: Text(_text, style: const TextStyle(fontSize: 24))),
       floatingActionButton: FloatingActionButton(
-        onPressed: _isListening ? _stopListening : _startListening,
+        onPressed: _listen,
         child: Icon(_isListening ? Icons.stop : Icons.mic),
       ),
     );
