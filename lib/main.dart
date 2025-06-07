@@ -47,7 +47,7 @@ class _VoiceHomePageState extends State<VoiceHomePage> {
               _text = words;
             });
 
-            if (words.contains('天城')) {
+            if (words.contains('天城') || words.contains('天成')) {
               _speech.stop();
               setState(() => _isListening = false);
               _startConversation();
