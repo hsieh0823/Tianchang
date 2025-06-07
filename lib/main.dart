@@ -29,7 +29,7 @@ class _VoiceHomePageState extends State<VoiceHomePage> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
   String _text = '請說出「天城」喚醒我...';
-  final String _apiKey = '在這裡填入你的 OpenAI API 金鑰';
+  final String _apiKey = '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';
 
   @override
   void initState() {
