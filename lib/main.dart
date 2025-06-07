@@ -72,23 +72,27 @@ class _VoiceHomePageState extends State<VoiceHomePage> {
       if (available) {
         setState(() => _isListening = true);
         _speech.listen(onResult: (result) async {
+          final spokenText = result.recognizedWords.toLowerCase();
           setState(() {
             _text = result.recognizedWords;
           });
-          if (result.finalResult) {
-            final aiReply = await _getOpenAIResponse(result.recognizedWords);
-            setState(() {
-              _text = aiReply;
-              _isListening = false;
-            });
-            _speech.stop();
-          }
-        });
-      }
-    } else {
-      setState(() => _isListening = false);
-      _speech.stop();
+
+        // 若包含「天城」或「天成」才進行回覆
+        if (result.finalResult &&
+            (spokenText.contains('天城') || spokenText.contains('天成'))) {
+          final aiReply = await _getOpenAIResponse(result.recognizedWords);
+          setState(() {
+            _text = aiReply;
+            _isListening = false;
+          });
+          _speech.stop();
+        }
+      });
     }
+  } else {
+    setState(() => _isListening = false);
+    _speech.stop();
+  }
   }
 
   @override
