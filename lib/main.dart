@@ -64,20 +64,19 @@ class _VoiceHomePageState extends State<VoiceHomePage> {
     #);
   #}
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(title: const Text('天城 AI 助理')),
-    body: Center(
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('天城 AI 助理')),
+      body: Center(
       child: Text("Flutter Web 測試成功", style: const TextStyle(fontSize: 24)),
-    ),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () {
-        setState(() {
-          _text = "按鈕被點了！";
-        });
-      },
-      child: const Icon(Icons.play_arrow),
-    ),
-  );
-}
-}
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _text = "按鈕被點了！";
+          });
+        },
+        child: const Icon(Icons.play_arrow),
+      ),
+    );
+  }
