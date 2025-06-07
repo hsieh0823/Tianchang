@@ -81,9 +81,8 @@ class _VoiceHomePageState extends State<VoiceHomePage> {
         });
       },
       child: const Icon(Icons.play_arrow),
-     ),
-   );
+      ),
+    );
+   }
  }
-}
-}
   
